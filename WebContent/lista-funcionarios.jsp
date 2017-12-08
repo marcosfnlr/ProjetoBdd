@@ -20,7 +20,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/funcionario.css">
-<title>Usuários</title>
+<title>Funcionários</title>
 </head>
 <body>
 	<nav class="navbar" data-spy="affix">
