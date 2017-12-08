@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CargoDAO;
-import dao.FuncionarioDAO;
-import model.Funcionario;
+import dao.FornecedorDAO;
+import model.Fornecedor;
 
 /**
  * Servlet implementation class UsuarioController
  */
-@WebServlet("/CadastroFuncionarioController")
-public class CadastroFuncionarioController extends HttpServlet {
+@WebServlet("/CadastroFornecedorController")
+public class CadastroFornecedorController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CadastroFuncionarioController() {
+	public CadastroFornecedorController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,9 +33,7 @@ public class CadastroFuncionarioController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CargoDAO dao = CargoDAO.getInstance();
-		request.setAttribute("listaCargos", dao.findAll());
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/funcionario.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/fornecedor.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
@@ -46,18 +43,16 @@ public class CadastroFuncionarioController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String nome = request.getParameter("nome");
-		String cpf = request.getParameter("cpf");
-		String email = request.getParameter("email");
-		Integer idCargo = Integer.parseInt(request.getParameter("cargo"));
+		String razaoSocial = request.getParameter("razaoSocial");
+		String cnpj = request.getParameter("cnpj");
 
-		Funcionario novoFunc = new Funcionario(null, nome, cpf, email, idCargo);
+		Fornecedor novo = new Fornecedor(null, razaoSocial, cnpj);
 
-		FuncionarioDAO dao = FuncionarioDAO.getInstance();
-		dao.inserir(novoFunc);
+		FornecedorDAO dao = FornecedorDAO.getInstance();
+		dao.inserir(novo);
 
-		request.setAttribute("listaFuncionarios", dao.findAll());
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/lista-funcionarios.jsp");
+		request.setAttribute("listaFornecedores", dao.findAll());
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/lista-fornecedores.jsp");
 		requestDispatcher.forward(request, response);
 	}
 

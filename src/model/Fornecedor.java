@@ -4,9 +4,9 @@ public class Fornecedor {
 
 	private Integer id;
 	private String razaoSocial;
-	private Integer cnpj;
+	private String cnpj;
 
-	public Fornecedor(Integer id, String razaoSocial, Integer cnpj) {
+	public Fornecedor(Integer id, String razaoSocial, String cnpj) {
 		super();
 		this.id = id;
 		this.razaoSocial = razaoSocial;
@@ -21,7 +21,7 @@ public class Fornecedor {
 		return razaoSocial;
 	}
 
-	public Integer getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 

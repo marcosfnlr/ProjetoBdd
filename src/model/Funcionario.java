@@ -4,11 +4,11 @@ public class Funcionario {
 
 	private Integer id;
 	private String nome;
-	private Integer cpf;
+	private String cpf;
 	private String email;
 	private Integer idCargo;
 
-	public Funcionario(Integer id, String nome, Integer cpf, String email, Integer idCargo) {
+	public Funcionario(Integer id, String nome, String cpf, String email, Integer idCargo) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -25,7 +25,7 @@ public class Funcionario {
 		return nome;
 	}
 
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 

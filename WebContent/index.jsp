@@ -29,7 +29,7 @@
 					data-target="#navItems">
 					<span class="glyphicon glyphicon-menu-hamburger"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span
+				<a class="navbar-brand" href="/PrjBancoDeDados/"><span
 					class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
 			</div>
 
@@ -38,12 +38,15 @@
 					<li><a href="FuncionarioController">Funcionários</a></li>
 					<li><a href="CompraController">Compras</a></li>
 					<li><a href="ProdutoController">Produtos</a></li>
+					<li><a href="FornecedorController">Fornecedores</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<div class="container">
-		<div class="row" style="height: 700px"></div>
+		<div class="row">
+			<img src="images/home.png" style="width: 50%; margin: 100px 25%"></img>
+		</div>
 	</div>
 
 </body>

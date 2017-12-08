@@ -2,7 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="model.Cargo"%>
+<%@page import="model.Produto"%>
+<%@page import="model.Compra"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +25,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/funcionario.css">
-<title>Cadastro Produto</title>
+<title>Compra</title>
 </head>
 <body>
 	<nav class="navbar" data-spy="affix">
@@ -49,25 +50,60 @@
 	</div>
 	</nav>
 	<div class="container">
-		<h1>Novo Produto</h1>
-		<form action="CadastroProdutoController" method="post">
-			<div class="row linhaForm">
-				<label class="col-sm-1 labelForm">Nome:</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" name="nome" />
-				</div>
-				<br>
-				<br>
-				<br>
-				<label class="col-sm-1">Descrição:</label>
-				<div class="col-sm-6">
-					<textarea class="form-control" rows="5" name="descricao" maxlength="250"></textarea>
+		<%Compra c = (Compra) request.getAttribute("compra"); %>
+		<div class="row listHeader">
+			<div class="col-sm-10">
+				<h1>Compra <%=c.getId() %></h1>
+			</div>
+		</div>
+		<div style="margin: 20px 30px;">
+			<div class="row">
+				Data: 
+				<%=c.getData() %>
+			</div>
+			<div class="row">
+				Preco: 
+				<%=c.getPreco() %>
+			</div>
+			<div class="row">
+				Id do funcionário: 
+				<%=c.getIdFuncionario() %>
+			</div>
+			<div class="row">
+				Id do fornecedor: 
+				<%=c.getIdFornecedor() %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Produto</th>
+								<th>Descrição</th>
+							</tr>
+						</thead>
+						<tbody>
+			<%
+			
+			List<Produto> lista = (List<Produto>) request.getAttribute("produtos");
+			if(lista!=null){
+			for (Produto p : lista) {
+				%>
+				<tr>
+					<td><%=p.getNome()%></td>
+					<td><%=p.getDescricao()%></td>
+				</tr>
+				<%
+					}
+			}
+				%>
+					</tbody>
+					</table>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-warning btnForm">
-				<span class="glyphicon glyphicon-ok-circle"></span> Salvar
-			</button>
-		</form>
+		</div>
 	</div>
 </body>
 </html>

@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CargoDAO;
-import dao.FuncionarioDAO;
-import model.Funcionario;
+import dao.CompraDAO;
+import dao.ProdutoDAO;
 
 /**
  * Servlet implementation class UsuarioController
  */
-@WebServlet("/CadastroFuncionarioController")
-public class CadastroFuncionarioController extends HttpServlet {
+@WebServlet("/AtualizarCompraController")
+public class AtualizarCompraController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CadastroFuncionarioController() {
+	public AtualizarCompraController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,9 +33,12 @@ public class CadastroFuncionarioController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CargoDAO dao = CargoDAO.getInstance();
-		request.setAttribute("listaCargos", dao.findAll());
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/funcionario.jsp");
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		CompraDAO dao = CompraDAO.getInstance();
+		ProdutoDAO daoP = ProdutoDAO.getInstance();
+		request.setAttribute("produtos", daoP.getProdutosCompra(id));
+		request.setAttribute("compra", dao.findByID(id));
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/update-compra.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
@@ -46,19 +48,7 @@ public class CadastroFuncionarioController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String nome = request.getParameter("nome");
-		String cpf = request.getParameter("cpf");
-		String email = request.getParameter("email");
-		Integer idCargo = Integer.parseInt(request.getParameter("cargo"));
 
-		Funcionario novoFunc = new Funcionario(null, nome, cpf, email, idCargo);
-
-		FuncionarioDAO dao = FuncionarioDAO.getInstance();
-		dao.inserir(novoFunc);
-
-		request.setAttribute("listaFuncionarios", dao.findAll());
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/lista-funcionarios.jsp");
-		requestDispatcher.forward(request, response);
 	}
 
 }

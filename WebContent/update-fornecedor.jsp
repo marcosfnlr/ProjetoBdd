@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="model.Cargo"%>
+<%@page import="model.Fornecedor"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +24,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/funcionario.css">
-<title>Cadastro Produto</title>
+<title>Cadastro Fornecedor</title>
 </head>
 <body>
 	<nav class="navbar" data-spy="affix">
@@ -49,19 +49,22 @@
 	</div>
 	</nav>
 	<div class="container">
-		<h1>Novo Produto</h1>
-		<form action="CadastroProdutoController" method="post">
+		<h1>Atualizar Fornecedor</h1>
+		<form action="AtualizarFornecedorController" method="post">
+			<%
+			Fornecedor f = (Fornecedor) request.getAttribute("fornecedor");
+			%>
+			<input type="hidden" value="<%= f.getId() %>" name="id"/>
 			<div class="row linhaForm">
-				<label class="col-sm-1 labelForm">Nome:</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" name="nome" />
+				<div class="col-sm-2 labelForm">Razão Social:</div>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" name="razaoSocial"
+						value="<%=f.getRazaoSocial()%>" />
 				</div>
-				<br>
-				<br>
-				<br>
-				<label class="col-sm-1">Descrição:</label>
-				<div class="col-sm-6">
-					<textarea class="form-control" rows="5" name="descricao" maxlength="250"></textarea>
+				<div class="col-sm-1 labelForm">CNPJ:</div>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" name="cnpj"
+						value="<%=f.getCnpj()%>" />
 				</div>
 			</div>
 			<button type="submit" class="btn btn-warning btnForm">

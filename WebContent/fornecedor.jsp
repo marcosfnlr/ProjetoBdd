@@ -24,7 +24,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/funcionario.css">
-<title>Cadastro Produto</title>
+<title>Cadastro Fornecedor</title>
 </head>
 <body>
 	<nav class="navbar" data-spy="affix">
@@ -49,19 +49,16 @@
 	</div>
 	</nav>
 	<div class="container">
-		<h1>Novo Produto</h1>
-		<form action="CadastroProdutoController" method="post">
+		<h1>Novo Fornecedor</h1>
+		<form action="CadastroFornecedorController" method="post">
 			<div class="row linhaForm">
-				<label class="col-sm-1 labelForm">Nome:</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" name="nome" />
+				<label class="col-sm-2 labelForm">Razão Social:</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" name="razaoSocial" />
 				</div>
-				<br>
-				<br>
-				<br>
-				<label class="col-sm-1">Descrição:</label>
-				<div class="col-sm-6">
-					<textarea class="form-control" rows="5" name="descricao" maxlength="250"></textarea>
+				<label class="col-sm-1 labelForm">CNPJ:</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" name="cnpj" />
 				</div>
 			</div>
 			<button type="submit" class="btn btn-warning btnForm">

@@ -52,7 +52,7 @@ public class AtualizarFuncionarioController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nome = request.getParameter("nome");
-		Integer cpf = Integer.parseInt(request.getParameter("cpf"));
+		String cpf = request.getParameter("cpf");
 		String email = request.getParameter("email");
 		Integer idCargo = Integer.parseInt(request.getParameter("cargo"));
 		Integer id = Integer.parseInt(request.getParameter("id"));

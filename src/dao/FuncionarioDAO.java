@@ -38,7 +38,7 @@ public class FuncionarioDAO {
 			String query = "SELECT * FROM Funcionario ORDER BY nome";
 			ResultSet result = state.executeQuery(query);
 			while (result.next()) {
-				fs.add(new Funcionario(result.getInt("idFuncionario"), result.getString("nome"), result.getInt("cpf"),
+				fs.add(new Funcionario(result.getInt("idFuncionario"), result.getString("nome"), result.getString("cpf"),
 						result.getString("email"), result.getInt("idCargo")));
 			}
 		} catch (SQLException e) {
@@ -57,7 +57,7 @@ public class FuncionarioDAO {
 			String query = "SELECT * FROM Funcionario WHERE idFuncionario = " + id;
 			ResultSet result = state.executeQuery(query);
 			while (result.next()) {
-				f = new Funcionario(result.getInt("idFuncionario"), result.getString("nome"), result.getInt("cpf"),
+				f = new Funcionario(result.getInt("idFuncionario"), result.getString("nome"), result.getString("cpf"),
 						result.getString("email"), result.getInt("idCargo"));
 			}
 		} catch (SQLException e) {
@@ -72,8 +72,8 @@ public class FuncionarioDAO {
 		conn = ConexaoMySQL.getConexaoMySQL();
 		try {
 			Statement state = conn.createStatement();
-			String query = "INSERT INTO Funcionario(nome, cpf, idCargo, email) VALUES('" + f.getNome() + "',"
-					+ f.getCpf() + "," + f.getIdCargo() + ",'" + f.getEmail() + "')";
+			String query = "INSERT INTO Funcionario(nome, cpf, idCargo, email) VALUES('" + f.getNome() + "','"
+					+ f.getCpf() + "' ," + f.getIdCargo() + ",'" + f.getEmail() + "')";
 			state.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -86,7 +86,7 @@ public class FuncionarioDAO {
 		conn = ConexaoMySQL.getConexaoMySQL();
 		try {
 			Statement state = conn.createStatement();
-			String query = "UPDATE Funcionario set nome = '" + f.getNome() + "', cpf = " + f.getCpf() + ", idCargo = "
+			String query = "UPDATE Funcionario set nome = '" + f.getNome() + "', cpf = '" + f.getCpf() + "', idCargo = "
 					+ f.getIdCargo() + ",  email = '" + f.getEmail() + "' WHERE idFuncionario = " + f.getId();
 			state.executeUpdate(query);
 		} catch (SQLException e) {

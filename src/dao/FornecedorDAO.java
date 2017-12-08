@@ -39,7 +39,7 @@ public class FornecedorDAO {
 			ResultSet result = state.executeQuery(query);
 			while (result.next()) {
 				fs.add(new Fornecedor(result.getInt("idFornecedor"), result.getString("razao_social"),
-						result.getInt("cnpj")));
+						result.getString("cnpj")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,7 +58,7 @@ public class FornecedorDAO {
 			ResultSet result = state.executeQuery(query);
 			while (result.next()) {
 				f = new Fornecedor(result.getInt("idFornecedor"), result.getString("razao_social"),
-						result.getInt("cnpj"));
+						result.getString("cnpj"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,8 +72,8 @@ public class FornecedorDAO {
 		conn = ConexaoMySQL.getConexaoMySQL();
 		try {
 			Statement state = conn.createStatement();
-			String query = "INSERT INTO Fornecedor(razao_social, cnpj) VALUES('" + f.getRazaoSocial() + "',"
-					+ f.getCnpj() + ")";
+			String query = "INSERT INTO Fornecedor(razao_social, cnpj) VALUES('" + f.getRazaoSocial() + "','"
+					+ f.getCnpj() + "')";
 			state.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -86,8 +86,8 @@ public class FornecedorDAO {
 		conn = ConexaoMySQL.getConexaoMySQL();
 		try {
 			Statement state = conn.createStatement();
-			String query = "UPDATE Fornecedor set razao_social = '" + f.getRazaoSocial() + "', cnpj = " + f.getCnpj()
-					+ " WHERE idFornecedor = " + f.getId();
+			String query = "UPDATE Fornecedor set razao_social = '" + f.getRazaoSocial() + "', cnpj = '" + f.getCnpj()
+					+ "' WHERE idFornecedor = " + f.getId();
 			state.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
